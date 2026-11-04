@@ -91,11 +91,15 @@ section.gris { background: var(--fondo-2); }
 .pasos p { margin: 0; color: var(--suave); }
 
 /* Casos */
-.casos { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.casos { display: grid; grid-template-columns: 1fr; gap: 24px; }
 .casos .hueco { aspect-ratio: 1 / 1; }
-.casos img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: contain; background: #fff; border-radius: var(--radio); }
-@media (min-width: 560px) { .casos { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 900px) { .casos { grid-template-columns: 1fr 1fr 1fr; } }
+.caso { margin: 0; display: grid; gap: 6px; }
+.caso div { position: relative; }
+.caso img { width: 100%; height: auto; aspect-ratio: 2 / 1; object-fit: cover; border-radius: var(--radio); }
+.caso span { position: absolute; top: 8px; left: 8px; padding: 2px 12px; border-radius: 4px; background: var(--azul); color: #fff; font-size: 19px; font-weight: 700; }
+.caso span.despues { background: var(--boton); }
+@media (min-width: 720px) { .casos { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1000px) { .casos { grid-template-columns: 1fr 1fr 1fr; } }
 
 /* Precio */
 .precio { border: 1px solid var(--borde); border-radius: var(--radio); overflow: hidden; max-width: 560px; }
