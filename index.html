@@ -11,7 +11,7 @@
   <link rel="icon" href="img/logo-anpalex.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="estilos.css">
   <script src="config.js"></script>
   <script src="pixel.js"></script>
@@ -22,7 +22,7 @@
 
   <header class="cabecera">
     <div class="envoltura">
-      <img src="img/logo-anpalex.png" alt="Clínica Dental Anpalex" width="237" height="70">
+      <img src="img/logo-anpalex.png" alt="Clínica Dental Anpalex" width="463" height="177">
       <div class="lugar">Av. Los Pajaritos 1395<br>Maipú</div>
     </div>
   </header>
@@ -30,15 +30,19 @@
   <!-- 1. Portada -->
   <section class="portada">
     <div class="envoltura">
-      <span class="etiqueta">Implantes dentales en Maipú</span>
-      <h1>¿Le faltan dientes? Agende su evaluación sin costo para implantes</h1>
-      <p class="bajada">Planificamos su implante con un escáner 3D, aquí mismo en la clínica, para hacerlo con más precisión y seguridad.</p>
-      <a class="boton" href="#video">Conozca cómo lo hacemos</a>
+      <div class="portada-texto">
+        <span class="etiqueta">Implantes dentales en Maipú</span>
+        <h1>¿Le faltan dientes? Agende su evaluación sin costo para implantes</h1>
+        <p class="bajada">Planificamos su implante con un escáner 3D, aquí mismo en la clínica, para hacerlo con más precisión y seguridad.</p>
+        <a class="boton" href="#reservar">Quiero agendar mi evaluación sin costo</a>
+        <a class="secundario" href="#video">Conozca cómo lo hacemos</a>
+      </div>
+      <img class="foto" src="img/doctor-paciente.jpg" alt="Doctor de la clínica mostrándole un implante a una paciente en el sillón" width="1280" height="720">
     </div>
   </section>
 
   <!-- 2. Video del doctor (guion P) -->
-  <section id="video" style="padding-top: 8px;">
+  <section id="video">
     <div class="envoltura angosto">
       <div class="video" id="cajaVideo">
         <div class="hueco">Aquí va el video horizontal de la clínica (guion P).</div>
@@ -53,27 +57,21 @@
       <p class="sub">Un equipo que ya ha puesto cerca de 3.000 implantes.</p>
       <div class="grilla">
         <div class="tarjeta">
-          <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 22V12M21 7l-9 5-9-5"/></svg></div>
           <div><h3>Escáner 3D aquí mismo</h3><p>Vemos su hueso en 3D, evaluamos los riesgos y planificamos el implante antes de la cirugía, adaptado a su caso.</p></div>
         </div>
         <div class="tarjeta">
-          <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17l-5.9 3 1.2-6.5L2.5 8.9 9.1 8z"/></svg></div>
           <div><h3>Marcas reconocidas</h3><p>Trabajamos con marcas de implantes reconocidas, como Neodent, del grupo suizo Straumann.</p></div>
         </div>
         <div class="tarjeta">
-          <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
           <div><h3>Corona sin moldes</h3><p>Para la corona usamos escáner intraoral, sin moldes incómodos.</p></div>
         </div>
         <div class="tarjeta">
-          <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5s1.3 1.5 3.5 1.5 3.5-1.5 3.5-1.5M9 9.5h.01M15 9.5h.01"/></svg></div>
           <div><h3>Si le dan nervios</h3><p>Usamos óxido nitroso, que lo mantiene relajado durante todo el procedimiento.</p></div>
         </div>
         <div class="tarjeta">
-          <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
           <div><h3>Con diabetes o presión alta</h3><p>Atendemos también a personas con enfermedades de base, siempre que estén controladas con su médico.</p></div>
         </div>
         <div class="tarjeta">
-          <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 10l7-7 7 7"/></svg></div>
           <div><h3>Si le falta hueso</h3><p>Muchas veces se puede hacer un injerto, con plasma rico en plaquetas de su propia sangre para ayudar a la recuperación.</p></div>
         </div>
       </div>
@@ -133,11 +131,11 @@
 
   <!-- 7. Cupos + formulario -->
   <section class="gris" id="reservar">
-    <div class="envoltura" style="text-align:center;">
+    <div class="envoltura">
       <h2>Reserve su evaluación sin costo</h2>
       <span class="cupos">Solo 10 cupos este mes</span>
       <p class="sub">Déjenos sus datos y en el paso siguiente nos escribe por WhatsApp para elegir el día y la hora.</p>
-      <form class="formulario" id="formulario" novalidate style="text-align:left;">
+      <form class="formulario" id="formulario" novalidate>
         <div class="campo" id="campoNombre">
           <label for="nombre">Nombre y apellido</label>
           <input id="nombre" name="nombre" autocomplete="name" required>
@@ -163,6 +161,7 @@
   <section>
     <div class="envoltura">
       <h2>Dónde estamos</h2>
+      <img class="foto" src="img/fachada.jpg" alt="Fachada de Clínica Dental Anpalex, Av. Los Pajaritos 1395" width="1000" height="750" loading="lazy">
       <div class="clinica">
         <div class="tarjeta">
           <h3>Clínica Dental Anpalex</h3>
@@ -192,10 +191,10 @@
       var C = window.ANPALEX || {};
 
       // Video: si está configurado, reemplaza el recuadro amarillo. Si no, la sección se quita
-      // (la página ya está publicada: el público no debe ver el recuadro) y el botón baja a «Cómo lo hacemos».
+      // (la página ya está publicada: el público no debe ver el recuadro) y el enlace baja a «Cómo lo hacemos».
       if (!C.video) {
         document.getElementById("video").remove();
-        document.querySelector('.portada .boton').setAttribute("href", "#como");
+        document.querySelector('.portada .secundario').setAttribute("href", "#como");
       } else {
         var caja = document.getElementById("cajaVideo");
         caja.innerHTML = /youtube\.com|youtu\.be/.test(C.video)
@@ -206,12 +205,16 @@
       // Aviso de borrador mientras quede algún recuadro amarillo
       if (document.querySelector(".hueco")) document.getElementById("avisoBorrador").hidden = false;
 
-      // Botón fijo: se esconde cuando el formulario está a la vista
+      // Botón fijo: se esconde cuando está a la vista el botón de arriba o el formulario
       var fijo = document.getElementById("fijo");
       if ("IntersectionObserver" in window) {
-        new IntersectionObserver(function (e) {
-          fijo.classList.toggle("oculto", e[0].isIntersecting);
-        }, { threshold: 0.15 }).observe(document.getElementById("reservar"));
+        var aLaVista = new Map();
+        var observador = new IntersectionObserver(function (e) {
+          e.forEach(function (x) { aLaVista.set(x.target, x.isIntersecting); });
+          fijo.classList.toggle("oculto", Array.from(aLaVista.values()).some(Boolean));
+        }, { threshold: 0.15 });
+        observador.observe(document.querySelector(".portada .boton"));
+        observador.observe(document.getElementById("reservar"));
       }
 
       // Teléfono chileno: deja 9 dígitos que empiezan con 9 (acepta que lo escriban con +56 o espacios)
