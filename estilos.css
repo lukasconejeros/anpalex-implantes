@@ -107,6 +107,10 @@ section.gris { background: var(--fondo-2); }
 .precio .cuerpo { padding: 20px 16px; }
 .precio .nombre { font-weight: 700; color: var(--azul); font-size: 23px; margin: 0; }
 .precio .desde { color: var(--suave); margin: 8px 0 0; }
+.precio .promo { display: inline-block; background: var(--boton); color: #fff; font-weight: 700; font-size: 18px; padding: 4px 12px; border-radius: 999px; margin-bottom: 10px; }
+.precio .antes { color: var(--suave); font-size: 22px; margin: 10px 0 0; }
+.precio .antes s { text-decoration-line: line-through; text-decoration-thickness: 2px; }
+.precio .ahora { color: var(--azul); font-weight: 700; }
 .precio .valor { font-size: clamp(46px, 12vw, 56px); font-weight: 800; color: var(--azul); line-height: 1; margin: 0 0 8px; }
 .precio .cuotas { display: block; color: var(--boton); font-weight: 700; }
 .incluye { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 6px; }
