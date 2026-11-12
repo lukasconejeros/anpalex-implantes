@@ -7,8 +7,8 @@ window.ANPALEX = {
   // Mensaje que el paciente manda desde la página de gracias. {nombre} se reemplaza.
   mensajeWhatsapp: "Hola, vengo de la página de implantes y quiero reservar mi evaluación sin costo. Mi nombre es {nombre}.",
 
-  // Píxel de Meta de implantes (pendiente #530: falta el acceso a la cuenta de anuncios).
-  pixelId: "",
+  // Píxel de Meta de Anpalex («Pixel Anpalex_Up», cuenta Clínica Anpalex). Lead se marca en gracias.html.
+  pixelId: "276186522022414",
 
   // Servidor del bot de Anpalex: revisa que el número tenga WhatsApp y el bot le escribe primero (12-11-2026).
   guardarDatosEn: "https://clinica-anpalex-clinica-anpalex.bvil2a.easypanel.host/api/pagina-implantes",
