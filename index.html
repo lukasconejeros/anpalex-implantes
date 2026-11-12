@@ -305,7 +305,8 @@
             var caja = document.getElementById(campo);
             if (j.error) caja.querySelector(".error").textContent = j.error;
             caja.classList.add("mal");
-            caja.querySelector("input").focus();
+            caja.scrollIntoView({ block: "center" });
+            caja.querySelector("input").focus({ preventScroll: true });
             boton.disabled = false;
             boton.textContent = "Reservar mi evaluación";
             return;
