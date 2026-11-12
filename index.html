@@ -154,7 +154,7 @@
     <div class="envoltura">
       <h2>Reserve su evaluación sin costo</h2>
       <span class="cupos">Solo 10 cupos este mes</span>
-      <p class="sub">Déjenos sus datos y en el paso siguiente nos escribe por WhatsApp para elegir el día y la hora.</p>
+      <p class="sub">Déjenos sus datos y le escribimos por WhatsApp para elegir el día y la hora.</p>
       <form class="formulario" id="formulario" novalidate>
         <div class="campo" id="campoNombre">
           <label for="nombre">Nombre y apellido</label>
@@ -170,6 +170,9 @@
           <label for="correo">Correo <span>(opcional)</span></label>
           <input id="correo" name="correo" type="email" autocomplete="email">
           <div class="error">Revise el correo o déjelo en blanco.</div>
+        </div>
+        <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+          <label for="empresa">Empresa</label><input id="empresa" name="empresa" tabindex="-1" autocomplete="off">
         </div>
         <button class="boton ancho" type="submit" id="enviar">Reservar mi evaluación</button>
         <p class="privacidad">Sus datos solo los usa Clínica Dental Anpalex para coordinar su evaluación.</p>
@@ -262,32 +265,58 @@
           nombre: nombre,
           telefono: "56" + telefono,
           correo: correo,
-          origen: "pagina-implantes",
-          utm_source: params.get("utm_source") || "",
-          utm_campaign: params.get("utm_campaign") || "",
-          utm_content: params.get("utm_content") || "",
-          fbclid: params.get("fbclid") || "",
+          origen: params.get("utm_campaign") || params.get("utm_source") || "pagina-implantes",
+          empresa: form.empresa.value,
         };
 
         var boton = document.getElementById("enviar");
         boton.disabled = true;
-        boton.textContent = "Enviando…";
+        boton.textContent = "Revisando su WhatsApp…";
 
-        if (window.fbq) window.fbq("track", "Lead", { content_name: "Implantes" });
-
-        var irAGracias = function () {
-          location.href = "gracias.html?n=" + encodeURIComponent(nombre.split(" ")[0]);
+        var primerNombre = nombre.split(" ")[0];
+        var irAGracias = function (estado) {
+          location.href = "gracias.html?n=" + encodeURIComponent(primerNombre) + "&e=" + estado;
         };
-        if (!C.guardarDatosEn) return irAGracias();
+        if (!C.guardarDatosEn) return irAGracias("pendiente");
+
+        // El servidor de la clínica revisa con WhatsApp si el número existe y, si existe, el bot le
+        // escribe primero. Si no existe, se marca el campo para que lo corrija. Si el servidor no
+        // contesta, igual pasa a «gracias» con el botón para escribirnos (nunca se pierde el interesado).
+        var errTel = document.querySelector("#campoTelefono .error");
+        var textoErrTel = errTel.getAttribute("data-original") || errTel.textContent;
+        errTel.setAttribute("data-original", textoErrTel);
+        errTel.textContent = textoErrTel;
         var listo = false;
-        var seguir = function () { if (!listo) { listo = true; irAGracias(); } };
+        var corte = setTimeout(function () { if (!listo) { listo = true; irAGracias("pendiente"); } }, 20000);
         fetch(C.guardarDatosEn, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "text/plain;charset=UTF-8" },
           body: JSON.stringify(datos),
-          keepalive: true,
-        }).then(seguir, seguir);
-        setTimeout(seguir, 2500);
+        }).then(function (r) {
+          return r.json().catch(function () { return {}; }).then(function (j) { return { status: r.status, j: j }; });
+        }).then(function (res) {
+          if (listo) return;
+          listo = true;
+          clearTimeout(corte);
+          var j = res.j || {};
+          if (j.ok) return irAGracias(j.estado === "escrito" || j.estado === "ya_escrito" ? "escrito" : "pendiente");
+          if (res.status === 422 || res.status === 400) {
+            var campo = j.campo === "nombre" ? "campoNombre" : j.campo === "correo" ? "campoCorreo" : "campoTelefono";
+            var caja = document.getElementById(campo);
+            if (j.error) caja.querySelector(".error").textContent = j.error;
+            caja.classList.add("mal");
+            caja.querySelector("input").focus();
+            boton.disabled = false;
+            boton.textContent = "Reservar mi evaluación";
+            return;
+          }
+          irAGracias("pendiente");
+        }, function () {
+          if (listo) return;
+          listo = true;
+          clearTimeout(corte);
+          irAGracias("pendiente");
+        });
       });
     })();
   </script>

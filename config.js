@@ -10,9 +10,8 @@ window.ANPALEX = {
   // Píxel de Meta de implantes (pendiente #530: falta el acceso a la cuenta de anuncios).
   pixelId: "",
 
-  // Dónde se guardan los datos del formulario para que la secretaria llame a los que no escriben.
-  // Vacío = todavía no se guardan en ninguna parte (pendiente).
-  guardarDatosEn: "",
+  // Servidor del bot de Anpalex: revisa que el número tenga WhatsApp y el bot le escribe primero (12-11-2026).
+  guardarDatosEn: "https://clinica-anpalex-clinica-anpalex.bvil2a.easypanel.host/api/pagina-implantes",
 
   // Video horizontal de la página (guion P). Link de YouTube "embed" o archivo .mp4.
   video: "",
