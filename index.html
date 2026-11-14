@@ -18,85 +18,61 @@
 </head>
 <body>
 
-  <div class="aviso-borrador" id="avisoBorrador" hidden>BORRADOR · los recuadros amarillos son lo que falta que mande la clínica</div>
-
   <header class="cabecera">
     <div class="envoltura">
       <img src="img/logo-anpalex.png" alt="Clínica Dental Anpalex" width="463" height="177">
-      <div class="lugar">Av. Los Pajaritos 1395<br>Maipú</div>
+      <div class="lugar">Implantes en Maipú</div>
     </div>
   </header>
 
-  <!-- 1. Portada -->
-  <section class="portada">
-    <div class="envoltura">
-      <div class="portada-texto">
-        <span class="etiqueta">Implantes dentales en Maipú</span>
-        <h1>¿Le faltan dientes? Agende su evaluación sin costo para implantes</h1>
-        <p class="bajada">Planificamos su implante con un escáner 3D, aquí mismo en la clínica, para hacerlo con más precisión y seguridad.</p>
-        <a class="boton" href="#reservar" data-abrir>Reservar mi evaluación sin costo</a>
-        <a class="secundario" href="#video">Vea al Dr. Herrera explicarlo</a>
-      </div>
-      <img class="foto" src="img/doctor-paciente.jpg" alt="Doctor de la clínica mostrándole un implante a una paciente en el sillón" width="1280" height="720">
-    </div>
-  </section>
-
-  <!-- 2. Video del doctor (guion P) -->
-  <section id="video">
+  <!-- Landing (14-11-2026, Lukas): lo primero es el video del Dr. Herrera andando y el botón; el resto, resumido. -->
+  <section class="arriba" id="video">
     <div class="envoltura angosto">
-      <div class="video" id="cajaVideo">
-        <div class="hueco">Aquí va el video horizontal de la clínica (guion P).</div>
-      </div>
-      <a class="boton ancho bajo-video" href="#reservar" data-abrir>Reservar mi evaluación sin costo</a>
+      <div class="video" id="cajaVideo"></div>
+      <a class="boton ancho bajo-video" id="botonArriba" href="#reservar" data-abrir>Reservar mi evaluación sin costo</a>
     </div>
   </section>
 
-  <!-- 3. Cómo lo hacemos -->
-  <section class="gris" id="como">
-    <div class="envoltura">
-      <h2>Cómo lo hacemos</h2>
-      <p class="sub">Un equipo que ya ha puesto cerca de 3.000 implantes.</p>
-      <div class="grilla">
-        <div class="tarjeta">
-          <div><h3>Escáner 3D aquí mismo</h3><p>Vemos su hueso en 3D, evaluamos los riesgos y planificamos el implante antes de la cirugía, adaptado a su caso.</p></div>
-        </div>
-        <div class="tarjeta">
-          <div><h3>Marcas reconocidas</h3><p>Trabajamos con marcas de implantes reconocidas, como Neodent, del grupo suizo Straumann.</p></div>
-        </div>
-        <div class="tarjeta">
-          <div><h3>Corona sin moldes</h3><p>Para la corona usamos escáner intraoral, sin moldes incómodos.</p></div>
-        </div>
-        <div class="tarjeta">
-          <div><h3>Si le dan nervios</h3><p>Usamos óxido nitroso, que lo mantiene relajado durante todo el procedimiento.</p></div>
-        </div>
-        <div class="tarjeta">
-          <div><h3>Con diabetes o presión alta</h3><p>Atendemos también a personas con enfermedades de base, siempre que estén controladas con su médico.</p></div>
-        </div>
-        <div class="tarjeta">
-          <div><h3>Si le falta hueso</h3><p>Muchas veces se puede hacer un injerto, con plasma rico en plaquetas de su propia sangre para ayudar a la recuperación.</p></div>
-        </div>
+  <!-- Precio -->
+  <section class="gris">
+    <div class="envoltura angosto">
+      <div class="precio">
+        <span class="promo">Promoción de este mes</span>
+        <h1 class="nombre">Implante con corona</h1>
+        <p class="antes">Antes <s>$850.000</s></p>
+        <p class="desde ahora">Ahora desde</p>
+        <div class="valor">$550.000</div>
+        <span class="cuotas">Hasta 12 cuotas sin interés</span>
+        <ul class="incluye">
+          <li>Cirugía del implante y corona</li>
+          <li>Evaluación sin costo: le decimos si es candidato y cuánto cuesta en su caso</li>
+        </ul>
+        <p class="letra-chica">El escáner 3D ($45.000) y el injerto de hueso, si lo necesita, van aparte. Solo atención particular, sin Fonasa ni Isapres.</p>
       </div>
     </div>
   </section>
 
-  <!-- 4. Cómo es el tratamiento -->
+  <!-- Por qué Anpalex, una línea por idea -->
   <section>
-    <div class="envoltura">
-      <h2>Cómo es el tratamiento</h2>
-      <p class="sub">No le vamos a prometer nada sin verlo.</p>
-      <ol class="pasos">
-        <li><div class="num">1</div><h3>Evaluación sin costo</h3><p>Le decimos si es candidato, cuántas sesiones son y cuánto cuesta en su caso.</p></li>
-        <li><div class="num">2</div><h3>Planificación</h3><p>Con el escáner 3D vemos su hueso y planificamos el implante antes de la cirugía.</p></li>
-        <li><div class="num">3</div><h3>Implante y corona</h3><p>Ponemos el implante y después la corona, tomada con escáner intraoral.</p></li>
-      </ol>
+    <div class="envoltura angosto">
+      <h2>Por qué con nosotros</h2>
+      <ul class="incluye razones">
+        <li><span><b>Cerca de 3.000 implantes</b> puestos</span></li>
+        <li><span><b>Escáner 3D aquí mismo</b>, planificamos antes de operar</span></li>
+        <li><span><b>Implantes Neodent</b>, del grupo suizo Straumann</span></li>
+        <li><span><b>Corona sin moldes</b>, con escáner en la boca</span></li>
+        <li><span><b>¿Le dan nervios?</b> Óxido nitroso para estar tranquilo</span></li>
+        <li><span><b>¿Le falta hueso?</b> Muchas veces se hace un injerto</span></li>
+        <li><span><b>¿Diabetes o presión alta?</b> También, si están controladas</span></li>
+      </ul>
     </div>
   </section>
 
-  <!-- 5. Pacientes reales (fotos que mandó la clínica el 27-10, chat 53) -->
+  <!-- Pacientes reales (fotos que mandó la clínica el 27-10, chat 53): en el teléfono se deslizan de lado -->
   <section class="gris">
     <div class="envoltura">
-      <h2>Pacientes que ya recuperaron su sonrisa</h2>
-      <p class="sub">Antes y después de pacientes de Clínica Dental Anpalex.</p>
+      <h2>Pacientes reales</h2>
+      <p class="sub deslice">Deslice para ver más →</p>
       <div class="casos">
         <figure class="caso">
           <div><span>Antes</span><img src="img/caso-1-antes.jpg" alt="Dientes del paciente 1 antes del tratamiento" width="1000" height="500" loading="lazy"></div>
@@ -126,64 +102,18 @@
     </div>
   </section>
 
-  <!-- 6. Precio -->
-  <section>
-    <div class="envoltura">
-      <h2>El valor</h2>
-      <div class="precio">
-        <img src="img/implante.jpg" alt="Implante dental con su corona" width="800" height="444">
-        <div class="cuerpo">
-          <span class="promo">Promoción de la clínica</span>
-          <p class="nombre">Implante con corona</p>
-          <p class="antes">Antes <s>$850.000</s></p>
-          <p class="desde ahora">Ahora desde</p>
-          <div class="valor">$550.000</div>
-          <span class="cuotas">Hasta 12 cuotas sin interés</span>
-          <ul class="incluye">
-            <li>Cirugía del implante</li>
-            <li>Corona sobre el implante</li>
-            <li>Evaluación sin costo</li>
-          </ul>
-          <p class="letra-chica">El valor final se confirma en la evaluación, según su caso. El escáner 3D ($45.000) y el injerto de hueso, si su caso lo necesita, se cobran aparte. Atención particular: no trabajamos con Fonasa ni Isapres.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7. Cupos + formulario -->
-  <section class="gris" id="reservar">
-    <div class="envoltura">
-      <h2>Reserve su evaluación sin costo</h2>
+  <!-- Cierre -->
+  <section id="reservar">
+    <div class="envoltura angosto">
       <span class="cupos">Solo 10 cupos este mes</span>
       <p class="sub">Deje su nombre y su WhatsApp, y le escribimos al tiro para elegir el día y la hora.</p>
       <a class="boton ancho" href="#reservar" data-abrir>Reservar mi evaluación sin costo</a>
     </div>
   </section>
 
-  <!-- 8. La clínica -->
-  <section>
-    <div class="envoltura">
-      <h2>Dónde estamos</h2>
-      <img class="foto" src="img/fachada.jpg" alt="Fachada de Clínica Dental Anpalex, Av. Los Pajaritos 1395" width="1000" height="750" loading="lazy">
-      <div class="clinica">
-        <div class="tarjeta">
-          <h3>Clínica Dental Anpalex</h3>
-          <p>Av. Los Pajaritos 1395, Maipú</p>
-          <p style="margin-top:8px;"><a href="https://www.google.com/maps/search/?api=1&query=Av.+Los+Pajaritos+1395,+Maip%C3%BA" target="_blank" rel="noopener">Ver en el mapa</a></p>
-        </div>
-        <div class="tarjeta">
-          <h3>Horario</h3>
-          <p>Lunes a viernes de 9:00 a 13:00 y de 14:00 a 18:00</p>
-          <p>Sábado de 9:00 a 14:00</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <footer>
     <div class="envoltura">
       <p><strong>Clínica Dental Anpalex</strong> · Av. Los Pajaritos 1395, Maipú</p>
-      <p>WhatsApp +56 9 7856 5936</p>
     </div>
   </footer>
 
@@ -217,20 +147,33 @@
     (function () {
       var C = window.ANPALEX || {};
 
-      // Video: si está configurado, reemplaza el recuadro amarillo. Si no, la sección se quita
-      // (la página ya está publicada: el público no debe ver el recuadro) y el enlace baja a «Cómo lo hacemos».
-      if (!C.video) {
-        document.getElementById("video").remove();
-        document.querySelector('.portada .secundario').setAttribute("href", "#como");
+      // Video: arranca solo apenas abre la página. Primero intenta con sonido; si el navegador no lo
+      // deja (Chrome, Safari y la app de Instagram/Facebook bloquean el sonido sin un toque), arranca
+      // sin sonido y muestra un botón grande para escucharlo desde el principio.
+      var caja = document.getElementById("cajaVideo");
+      caja.innerHTML = '<video src="' + C.video + '"' + (C.videoPortada ? ' poster="' + C.videoPortada + '"' : '') +
+        ' playsinline preload="auto"></video>' +
+        '<button class="sonido" type="button" id="botonSonido" hidden><span>Toque para escuchar</span></button>';
+      var video = caja.querySelector("video");
+      var botonSonido = document.getElementById("botonSonido");
+      function conControles() { video.controls = true; botonSonido.hidden = true; }
+      botonSonido.addEventListener("click", function () {
+        video.muted = false;
+        video.currentTime = 0;
+        video.play();
+        conControles();
+      });
+      video.muted = false;
+      var intento = video.play();
+      if (intento && intento.then) {
+        intento.then(conControles, function () {
+          video.muted = true;
+          botonSonido.hidden = false;
+          video.play().catch(function () {});
+        });
       } else {
-        var caja = document.getElementById("cajaVideo");
-        caja.innerHTML = /youtube\.com|youtu\.be/.test(C.video)
-          ? '<iframe src="' + C.video + '" title="Implantes en Clínica Anpalex" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'
-          : '<video src="' + C.video + '"' + (C.videoPortada ? ' poster="' + C.videoPortada + '"' : '') + ' controls playsinline preload="metadata"></video>';
+        conControles();
       }
-
-      // Aviso de borrador mientras quede algún recuadro amarillo
-      if (document.querySelector(".hueco")) document.getElementById("avisoBorrador").hidden = false;
 
       // Botón fijo: se esconde cuando está a la vista el botón de arriba o el formulario
       var fijo = document.getElementById("fijo");
@@ -240,7 +183,7 @@
           e.forEach(function (x) { aLaVista.set(x.target, x.isIntersecting); });
           fijo.classList.toggle("oculto", Array.from(aLaVista.values()).some(Boolean));
         }, { threshold: 0.15 });
-        observador.observe(document.querySelector(".portada .boton"));
+        observador.observe(document.getElementById("botonArriba"));
         observador.observe(document.getElementById("reservar"));
       }
 
