@@ -14,5 +14,7 @@ window.ANPALEX = {
   guardarDatosEn: "https://clinica-anpalex-clinica-anpalex.bvil2a.easypanel.host/api/pagina-implantes",
 
   // Video horizontal de la página (guion P). Link de YouTube "embed" o archivo .mp4.
-  video: "",
+  video: "video/dr-herrera-implantes.mp4",
+  // Foto que se ve antes de apretar play (un cuadro del mismo video).
+  videoPortada: "video/dr-herrera-portada.jpg",
 };

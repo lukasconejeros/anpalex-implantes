@@ -155,3 +155,11 @@ footer p { margin: 4px 0; }
 .gracias .listo { width: 56px; height: 56px; color: var(--verde-wa); margin: 0 0 8px; }
 .gracias .listo svg { width: 56px; height: 56px; }
 .gracias .pasos { margin-top: 28px; }
+
+/* Formulario en ventana (14-11-2026) */
+.ventana { border: 0; border-radius: 12px; padding: 28px 22px 22px; width: min(460px, calc(100vw - 24px)); max-height: calc(100vh - 24px); color: var(--texto); }
+.ventana::backdrop { background: rgba(15, 23, 32, .6); }
+.ventana h2 { margin-right: 36px; }
+.ventana .formulario { margin-top: 12px; }
+.ventana .cerrar { position: absolute; top: 10px; right: 10px; width: 44px; height: 44px; border: 0; background: transparent; font-size: 34px; line-height: 1; color: var(--suave); cursor: pointer; }
+.bajo-video { margin-top: 18px; }

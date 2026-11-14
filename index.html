@@ -34,8 +34,8 @@
         <span class="etiqueta">Implantes dentales en Maipú</span>
         <h1>¿Le faltan dientes? Agende su evaluación sin costo para implantes</h1>
         <p class="bajada">Planificamos su implante con un escáner 3D, aquí mismo en la clínica, para hacerlo con más precisión y seguridad.</p>
-        <a class="boton" href="#reservar">Quiero agendar mi evaluación sin costo</a>
-        <a class="secundario" href="#video">Conozca cómo lo hacemos</a>
+        <a class="boton" href="#reservar" data-abrir>Reservar mi evaluación sin costo</a>
+        <a class="secundario" href="#video">Vea al Dr. Herrera explicarlo</a>
       </div>
       <img class="foto" src="img/doctor-paciente.jpg" alt="Doctor de la clínica mostrándole un implante a una paciente en el sillón" width="1280" height="720">
     </div>
@@ -47,6 +47,7 @@
       <div class="video" id="cajaVideo">
         <div class="hueco">Aquí va el video horizontal de la clínica (guion P).</div>
       </div>
+      <a class="boton ancho bajo-video" href="#reservar" data-abrir>Reservar mi evaluación sin costo</a>
     </div>
   </section>
 
@@ -154,29 +155,8 @@
     <div class="envoltura">
       <h2>Reserve su evaluación sin costo</h2>
       <span class="cupos">Solo 10 cupos este mes</span>
-      <p class="sub">Déjenos sus datos y le escribimos por WhatsApp para elegir el día y la hora.</p>
-      <form class="formulario" id="formulario" novalidate>
-        <div class="campo" id="campoNombre">
-          <label for="nombre">Nombre y apellido</label>
-          <input id="nombre" name="nombre" autocomplete="name" required>
-          <div class="error">Escriba su nombre y apellido.</div>
-        </div>
-        <div class="campo" id="campoTelefono">
-          <label for="telefono">WhatsApp</label>
-          <div class="prefijo"><b>+56</b><input id="telefono" name="telefono" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="9 1234 5678" required></div>
-          <div class="error">Escriba un celular de 9 dígitos que empiece con 9.</div>
-        </div>
-        <div class="campo" id="campoCorreo">
-          <label for="correo">Correo <span>(opcional)</span></label>
-          <input id="correo" name="correo" type="email" autocomplete="email">
-          <div class="error">Revise el correo o déjelo en blanco.</div>
-        </div>
-        <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
-          <label for="empresa">Empresa</label><input id="empresa" name="empresa" tabindex="-1" autocomplete="off">
-        </div>
-        <button class="boton ancho" type="submit" id="enviar">Reservar mi evaluación</button>
-        <p class="privacidad">Sus datos solo los usa Clínica Dental Anpalex para coordinar su evaluación.</p>
-      </form>
+      <p class="sub">Deje su nombre y su WhatsApp, y le escribimos al tiro para elegir el día y la hora.</p>
+      <a class="boton ancho" href="#reservar" data-abrir>Reservar mi evaluación sin costo</a>
     </div>
   </section>
 
@@ -207,7 +187,31 @@
     </div>
   </footer>
 
-  <div class="fijo" id="fijo"><a class="boton ancho" href="#reservar">Reservar mi evaluación sin costo</a></div>
+  <!-- Formulario en ventana (14-11-2026, Lukas: «apretar un botón y que se abra el formulario»). Solo nombre y WhatsApp. -->
+  <dialog class="ventana" id="ventana" aria-labelledby="tituloVentana">
+    <button class="cerrar" type="button" id="cerrarVentana" aria-label="Cerrar">×</button>
+    <h2 id="tituloVentana">Reserve su evaluación sin costo</h2>
+    <p class="sub">Le escribimos por WhatsApp para elegir el día y la hora.</p>
+        <form class="formulario" id="formulario" novalidate>
+          <div class="campo" id="campoNombre">
+            <label for="nombre">Nombre y apellido</label>
+            <input id="nombre" name="nombre" autocomplete="name" required>
+            <div class="error">Escriba su nombre y apellido.</div>
+          </div>
+          <div class="campo" id="campoTelefono">
+            <label for="telefono">WhatsApp</label>
+            <div class="prefijo"><b>+56</b><input id="telefono" name="telefono" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="9 1234 5678" required></div>
+            <div class="error">Escriba un celular de 9 dígitos que empiece con 9.</div>
+          </div>
+          <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+            <label for="empresa">Empresa</label><input id="empresa" name="empresa" tabindex="-1" autocomplete="off">
+          </div>
+          <button class="boton ancho" type="submit" id="enviar">Reservar mi evaluación sin costo</button>
+          <p class="privacidad">Sus datos solo los usa Clínica Dental Anpalex para coordinar su evaluación.</p>
+        </form>
+  </dialog>
+
+  <div class="fijo" id="fijo"><a class="boton ancho" href="#reservar" data-abrir>Reservar mi evaluación sin costo</a></div>
 
   <script>
     (function () {
@@ -222,7 +226,7 @@
         var caja = document.getElementById("cajaVideo");
         caja.innerHTML = /youtube\.com|youtu\.be/.test(C.video)
           ? '<iframe src="' + C.video + '" title="Implantes en Clínica Anpalex" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'
-          : '<video src="' + C.video + '" controls playsinline preload="metadata"></video>';
+          : '<video src="' + C.video + '"' + (C.videoPortada ? ' poster="' + C.videoPortada + '"' : '') + ' controls playsinline preload="metadata"></video>';
       }
 
       // Aviso de borrador mientras quede algún recuadro amarillo
@@ -240,6 +244,19 @@
         observador.observe(document.getElementById("reservar"));
       }
 
+      // Todos los botones «Reservar» abren la ventana con el formulario (sin JS o sin <dialog>, bajan a #reservar).
+      var ventana = document.getElementById("ventana");
+      function abrirVentana(ev) {
+        if (!ventana.showModal) return;
+        ev.preventDefault();
+        ventana.showModal();
+        setTimeout(function () { document.getElementById("nombre").focus(); }, 50);
+        if (window.fbq) fbq("track", "InitiateCheckout");
+      }
+      document.querySelectorAll("[data-abrir]").forEach(function (b) { b.addEventListener("click", abrirVentana); });
+      document.getElementById("cerrarVentana").addEventListener("click", function () { ventana.close(); });
+      ventana.addEventListener("click", function (ev) { if (ev.target === ventana) ventana.close(); });
+
       // Teléfono chileno: deja 9 dígitos que empiezan con 9 (acepta que lo escriban con +56 o espacios)
       function limpiarTelefono(v) {
         var d = String(v).replace(/\D/g, "");
@@ -252,19 +269,16 @@
         ev.preventDefault();
         var nombre = form.nombre.value.trim().replace(/\s+/g, " ");
         var telefono = limpiarTelefono(form.telefono.value);
-        var correo = form.correo.value.trim();
         var okNombre = nombre.length >= 3;
-        var okCorreo = !correo || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
         document.getElementById("campoNombre").classList.toggle("mal", !okNombre);
         document.getElementById("campoTelefono").classList.toggle("mal", !telefono);
-        document.getElementById("campoCorreo").classList.toggle("mal", !okCorreo);
-        if (!okNombre || !telefono || !okCorreo) return;
+        if (!okNombre || !telefono) return;
 
         var params = new URLSearchParams(location.search);
         var datos = {
           nombre: nombre,
           telefono: "56" + telefono,
-          correo: correo,
+          correo: "",
           origen: params.get("utm_campaign") || params.get("utm_source") || "pagina-implantes",
           empresa: form.empresa.value,
         };
@@ -301,14 +315,14 @@
           var j = res.j || {};
           if (j.ok) return irAGracias(j.estado === "escrito" || j.estado === "ya_escrito" ? "escrito" : "pendiente");
           if (res.status === 422 || res.status === 400) {
-            var campo = j.campo === "nombre" ? "campoNombre" : j.campo === "correo" ? "campoCorreo" : "campoTelefono";
+            var campo = j.campo === "nombre" ? "campoNombre" : "campoTelefono";
             var caja = document.getElementById(campo);
             if (j.error) caja.querySelector(".error").textContent = j.error;
             caja.classList.add("mal");
             caja.scrollIntoView({ block: "center" });
             caja.querySelector("input").focus({ preventScroll: true });
             boton.disabled = false;
-            boton.textContent = "Reservar mi evaluación";
+            boton.textContent = "Reservar mi evaluación sin costo";
             return;
           }
           irAGracias("pendiente");
