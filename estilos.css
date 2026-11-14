@@ -164,27 +164,56 @@ footer p { margin: 4px 0; }
 .ventana .cerrar { position: absolute; top: 10px; right: 10px; width: 44px; height: 44px; border: 0; background: transparent; font-size: 34px; line-height: 1; color: var(--suave); cursor: pointer; }
 .bajo-video { margin-top: 18px; }
 
-/* Landing 14-11-2026: video primero, info resumida */
-.cabecera .envoltura { min-height: 60px; }
-.cabecera img { height: 44px; }
-.cabecera .lugar { font-weight: 700; color: var(--azul); }
-section.arriba { padding: 12px 0 28px; }
-@media (max-width: 719px) { section.arriba .envoltura { padding: 0; } section.arriba .video { border-radius: 0; } section.arriba .bajo-video { width: calc(100% - 32px); margin: 14px 16px 0; } }
-.sonido { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; font: inherit; background: transparent; cursor: pointer; display: flex; align-items: flex-end; justify-content: center; }
+/* Landing 14-11-2026 (v2): franja de cupos, Paso 1 a 4 como la competencia, promoción grande */
+:root { --amarillo: #ffc93c; }
+.franja { position: sticky; top: 0; z-index: 20; background: var(--amarillo); color: #1a2440; text-align: center; font-size: 19px; line-height: 1.3; padding: 9px 12px; }
+.franja b { font-weight: 800; }
+.cabecera .envoltura { justify-content: center; min-height: 0; padding-top: 10px; padding-bottom: 10px; }
+.cabecera img { height: 58px; width: auto; }
+.paso { margin: 0 0 10px; font-size: 22px; font-weight: 800; color: var(--azul); line-height: 1.25; display: flex; align-items: center; gap: 10px; }
+.paso span { background: var(--azul); color: #fff; font-size: 18px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 3px 10px; border-radius: 6px; }
+section.arriba { padding: 16px 0 28px; }
+section.arriba .video { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+@media (max-width: 719px) {
+  section.arriba .envoltura { padding: 0; }
+  section.arriba .paso { padding: 0 16px; }
+  section.arriba .video, section.arriba .promo-caja { border-radius: 0; }
+  section.arriba .boton { width: calc(100% - 32px); margin: 14px 16px 0; }
+}
+/* Botón de sonido encima del video (ningún navegador deja partir con sonido sin un toque) */
+.sonido { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; font: inherit; background: rgba(10, 20, 40, .25); cursor: pointer; display: flex; align-items: center; justify-content: center; }
 .sonido[hidden] { display: none; }
-.sonido span { margin-bottom: 12px; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; background: #fff; color: var(--azul); font-size: 19px; font-weight: 800; padding: 8px 16px; border-radius: 999px; border: 2px solid var(--azul); }
-.sonido span::before { content: ""; width: 26px; height: 26px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2322336b'%3E%3Cpath d='M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z'/%3E%3C/svg%3E") center / 26px no-repeat; }
-.precio { max-width: none; background: #fff; padding: 22px 18px; }
-h1.nombre { font-size: 26px; margin: 0; }
-.precio .valor { margin-top: 2px; }
-.razones { margin-top: 12px; gap: 12px; }
+.sonido span { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; background: var(--amarillo); color: #1a2440; font-size: 21px; font-weight: 800; padding: 12px 22px; border-radius: 999px; animation: latido 1.4s ease-in-out infinite; }
+.sonido span::before { content: ""; width: 28px; height: 28px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a2440'%3E%3Cpath d='M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z'/%3E%3C/svg%3E") center / 28px no-repeat; }
+@keyframes latido { 50% { transform: scale(1.07); } }
+@media (prefers-reduced-motion: reduce) { .sonido span { animation: none; } }
+/* Promoción, pegada bajo el video */
+.promo-caja { background: var(--azul); color: #fff; border-radius: 0 0 var(--radio) var(--radio); padding: 14px 18px 16px; text-align: center; }
+.promo-titulo { margin: 0; font-size: 19px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; color: var(--amarillo); }
+.promo-antes { margin: 2px 0 0; font-size: 21px; color: #fff; }
+.promo-antes s { text-decoration-thickness: 2px; }
+.promo-ahora { margin: 0; display: flex; align-items: baseline; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.promo-ahora span { font-size: 22px; font-weight: 700; }
+.promo-ahora .valor { font-size: clamp(46px, 13vw, 60px); font-weight: 800; line-height: 1.05; color: var(--amarillo); }
+.promo-cuotas { margin: 2px 0 0; font-size: 21px; font-weight: 700; }
+.boton.grande { min-height: 66px; font-size: 22px; padding-left: 12px; padding-right: 12px; }
+section.arriba .boton { margin-top: 14px; }
+@media (min-width: 900px) { .boton.grande { max-width: none; } }
+/* Paso 3 */
+.razones { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 10px; }
+.razones li { display: flex; gap: 12px; align-items: flex-start; background: var(--fondo-2); border-radius: var(--radio); padding: 12px 14px; line-height: 1.35; }
+.razones li::before { content: ""; flex: 0 0 26px; height: 26px; margin-top: 1px; border-radius: 50%; background: var(--boton) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4L18 8'/%3E%3C/svg%3E") center / 18px no-repeat; }
 .razones b { color: var(--azul); }
-/* Antes y después: en el teléfono se deslizan de lado, uno por pantalla */
+/* Paso 2 */
 .deslice { margin-bottom: 12px; }
 @media (max-width: 719px) {
   .casos { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; padding-bottom: 8px; margin: 0 -16px; padding-left: 16px; padding-right: 16px; scroll-padding-left: 16px; }
   .caso { flex: 0 0 86%; scroll-snap-align: start; }
 }
 @media (min-width: 720px) { .deslice { display: none; } }
-#reservar { text-align: left; }
+/* Paso 4 */
+.cupos-grande { margin: 4px 0 12px; display: inline-block; background: var(--amarillo); color: #1a2440; font-size: 26px; font-weight: 800; padding: 6px 14px; border-radius: var(--radio); }
+.cierre .incluye { margin: 0 0 18px; }
+.cierre .letra-chica { margin-top: 14px; }
 footer { padding-top: 18px; }
+.fijo { z-index: 15; }

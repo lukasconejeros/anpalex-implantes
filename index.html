@@ -12,66 +12,40 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="estilos.css?v=20261114c">
   <script src="config.js"></script>
   <script src="pixel.js"></script>
 </head>
 <body>
 
+  <!-- Franja de urgencia: siempre a la vista (14-11, Lukas: «los 10 cupos tienen que verse apenas se vea») -->
+  <div class="franja" id="franja"><b>Solo 10 cupos este mes</b> · Evaluación sin costo</div>
+
   <header class="cabecera">
     <div class="envoltura">
       <img src="img/logo-anpalex.png" alt="Clínica Dental Anpalex" width="463" height="177">
-      <div class="lugar">Implantes en Maipú</div>
     </div>
   </header>
 
-  <!-- Landing (14-11-2026, Lukas): lo primero es el video del Dr. Herrera andando y el botón; el resto, resumido. -->
+  <!-- PASO 1: el video del Dr. Herrera arriba, la promoción y el botón, todo en la primera pantalla -->
   <section class="arriba" id="video">
     <div class="envoltura angosto">
+      <p class="paso"><span>Paso 1</span> Mire este video</p>
       <div class="video" id="cajaVideo"></div>
-      <a class="boton ancho bajo-video" id="botonArriba" href="#reservar" data-abrir>Reservar mi evaluación sin costo</a>
-    </div>
-  </section>
-
-  <!-- Precio -->
-  <section class="gris">
-    <div class="envoltura angosto">
-      <div class="precio">
-        <span class="promo">Promoción de este mes</span>
-        <h1 class="nombre">Implante con corona</h1>
-        <p class="antes">Antes <s>$850.000</s></p>
-        <p class="desde ahora">Ahora desde</p>
-        <div class="valor">$550.000</div>
-        <span class="cuotas">Hasta 12 cuotas sin interés</span>
-        <ul class="incluye">
-          <li>Cirugía del implante y corona</li>
-          <li>Evaluación sin costo: le decimos si es candidato y cuánto cuesta en su caso</li>
-        </ul>
-        <p class="letra-chica">El escáner 3D ($45.000) y el injerto de hueso, si lo necesita, van aparte. Solo atención particular, sin Fonasa ni Isapres.</p>
+      <div class="promo-caja">
+        <p class="promo-titulo">Promoción implante con corona</p>
+        <p class="promo-antes">Antes <s>$850.000</s></p>
+        <p class="promo-ahora"><span>Ahora desde</span> <b class="valor">$550.000</b></p>
+        <p class="promo-cuotas">Hasta 12 cuotas sin interés</p>
       </div>
+      <a class="boton ancho grande" id="botonArriba" href="#reservar" data-abrir>Reservar mi evaluación sin costo</a>
     </div>
   </section>
 
-  <!-- Por qué Anpalex, una línea por idea -->
-  <section>
-    <div class="envoltura angosto">
-      <h2>Por qué con nosotros</h2>
-      <ul class="incluye razones">
-        <li><span><b>Cerca de 3.000 implantes</b> puestos</span></li>
-        <li><span><b>Escáner 3D aquí mismo</b>, planificamos antes de operar</span></li>
-        <li><span><b>Implantes Neodent</b>, del grupo suizo Straumann</span></li>
-        <li><span><b>Corona sin moldes</b>, con escáner en la boca</span></li>
-        <li><span><b>¿Le dan nervios?</b> Óxido nitroso para estar tranquilo</span></li>
-        <li><span><b>¿Le falta hueso?</b> Muchas veces se hace un injerto</span></li>
-        <li><span><b>¿Diabetes o presión alta?</b> También, si están controladas</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Pacientes reales (fotos que mandó la clínica el 27-10, chat 53): en el teléfono se deslizan de lado -->
+  <!-- PASO 2: pacientes reales (fotos que mandó la clínica el 27-10, chat 53); en el teléfono se deslizan de lado -->
   <section class="gris">
     <div class="envoltura">
-      <h2>Pacientes reales</h2>
+      <p class="paso"><span>Paso 2</span> Vea pacientes reales</p>
       <p class="sub deslice">Deslice para ver más →</p>
       <div class="casos">
         <figure class="caso">
@@ -102,12 +76,34 @@
     </div>
   </section>
 
-  <!-- Cierre -->
-  <section id="reservar">
+  <!-- PASO 3: por qué con nosotros, una línea por idea -->
+  <section>
     <div class="envoltura angosto">
-      <span class="cupos">Solo 10 cupos este mes</span>
-      <p class="sub">Deje su nombre y su WhatsApp, y le escribimos al tiro para elegir el día y la hora.</p>
-      <a class="boton ancho" href="#reservar" data-abrir>Reservar mi evaluación sin costo</a>
+      <p class="paso"><span>Paso 3</span> Por qué con nosotros</p>
+      <ul class="razones">
+        <li><span><b>Cerca de 3.000 implantes</b> puestos</span></li>
+        <li><span><b>Escáner 3D aquí mismo</b>, planificamos antes de operar</span></li>
+        <li><span><b>Implantes Neodent</b>, del grupo suizo Straumann</span></li>
+        <li><span><b>Corona sin moldes</b>, con escáner en la boca</span></li>
+        <li><span><b>¿Le dan nervios?</b> Óxido nitroso para estar tranquilo</span></li>
+        <li><span><b>¿Le falta hueso?</b> Muchas veces se hace un injerto</span></li>
+        <li><span><b>¿Diabetes o presión alta?</b> También, si están controladas</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PASO 4: reservar -->
+  <section class="cierre" id="reservar">
+    <div class="envoltura angosto">
+      <p class="paso"><span>Paso 4</span> Reserve su cupo</p>
+      <p class="cupos-grande">Solo 10 cupos este mes</p>
+      <ul class="incluye">
+        <li><span>Evaluación sin costo: le decimos si es candidato y cuánto cuesta en su caso</span></li>
+        <li><span>Implante con corona desde <b>$550.000</b>, hasta 12 cuotas sin interés</span></li>
+        <li><span>Deje su nombre y WhatsApp, y le escribimos al tiro</span></li>
+      </ul>
+      <a class="boton ancho grande" href="#reservar" data-abrir>Reservar mi evaluación sin costo</a>
+      <p class="letra-chica">El escáner 3D ($45.000) y el injerto de hueso, si lo necesita, van aparte. Solo atención particular, sin Fonasa ni Isapres.</p>
     </div>
   </section>
 
@@ -153,7 +149,7 @@
       var caja = document.getElementById("cajaVideo");
       caja.innerHTML = '<video src="' + C.video + '"' + (C.videoPortada ? ' poster="' + C.videoPortada + '"' : '') +
         ' playsinline preload="auto"></video>' +
-        '<button class="sonido" type="button" id="botonSonido" hidden><span>Toque para escuchar</span></button>';
+        '<button class="sonido" type="button" id="botonSonido" hidden><span>Active el sonido</span></button>';
       var video = caja.querySelector("video");
       var botonSonido = document.getElementById("botonSonido");
       function conControles() { video.controls = true; botonSonido.hidden = true; }
