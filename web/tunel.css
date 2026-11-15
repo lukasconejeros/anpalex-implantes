@@ -1,7 +1,7 @@
 /* Portada en túnel (solo index.html). Ver ../investigacion/VIDEOS-JUANPE-WEB-TUNEL.md */
 :root { --noche: #0B2124; --noche-2: #0F2C31; --crema-80: rgba(250, 247, 242, .8); }
 
-.pagina-noche { background: var(--noche); color: var(--crema-80); }
+
 
 /* Cabecera clara sobre fondo oscuro */
 .cabecera-noche { background: linear-gradient(180deg, rgba(11, 33, 36, .85), rgba(11, 33, 36, 0)); backdrop-filter: none; -webkit-backdrop-filter: none; }
@@ -11,25 +11,25 @@
 .cabecera-noche .boton-menu span:not(.oculto) { background: var(--crema); }
 
 /* Escenas: sin túnel (sin JavaScript o con «reducir movimiento») van una debajo de otra */
-.tunel { position: relative; background: radial-gradient(ellipse at 50% 40%, #12363B 0%, var(--noche) 62%); }
+.tunel { position: relative; background: var(--crema); }
 .tunel-lineas, .tunel-indice, .tunel-pista { display: none; }
 .capa { padding: 120px 0; }
 .capa-in { width: min(1180px, 100% - 64px); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 72px; align-items: center; }
 .capa-al-reves .capa-texto { order: 2; }
 
-.capa h1, .capa h2 { color: var(--crema); }
+.capa h1, .capa h2 { color: var(--tinta); }
 .capa h1 { font-size: clamp(2.7rem, 5vw, 4.4rem); margin-bottom: 22px; max-width: 14ch; }
 .capa h2 { font-size: clamp(2.3rem, 4vw, 3.6rem); line-height: 1.06; margin-bottom: 22px; max-width: 16ch; }
-.capa-texto > p:not(.etiqueta):not(.capa-num) { max-width: 44ch; font-size: 1.05rem; color: var(--crema-80); margin-bottom: 30px; }
-.capa .bajada { color: var(--crema-80); }
-.capa-num { display: flex; align-items: baseline; gap: 14px; font: 600 11.5px/1.3 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: #9FDDE0; margin-bottom: 20px; }
-.capa-num span { font: 400 1.6rem/1 var(--serif); letter-spacing: 0; color: var(--linea); }
+.capa-texto > p:not(.etiqueta):not(.capa-num) { max-width: 44ch; font-size: 1.05rem; color: var(--texto); margin-bottom: 30px; }
+
+.capa-num { display: flex; align-items: baseline; gap: 14px; font: 600 11.5px/1.3 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--acento); margin-bottom: 20px; }
+.capa-num span { font: 400 1.6rem/1 var(--serif); letter-spacing: 0; color: var(--acento); }
 .capa .botones { margin-bottom: 26px; }
 .capa .botones .enlace { margin-left: 10px; }
 .enlace-claro { color: #9FDDE0; }
 .enlace-claro:hover { color: #fff; }
 
-.capa-foto { margin: 0; position: relative; background: var(--crema); padding: 6px; border-radius: 2px; box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .7), 0 0 0 1px rgba(41, 176, 184, .25), 0 0 60px -10px rgba(41, 176, 184, .25); }
+.capa-foto { margin: 0; position: relative; background: #fff; padding: 6px; border-radius: 2px; box-shadow: var(--sombra-foto); }
 .capa-foto img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 1px; }
 .capa-foto-vertical { width: min(100%, 380px); justify-self: center; }
 .capa-foto-vertical img { aspect-ratio: 4 / 5; }
@@ -40,8 +40,8 @@
 .capa-portada .capa-foto img { aspect-ratio: 4 / 3; object-position: 60% 35%; }
 
 .capa-cita blockquote { width: min(820px, 100% - 64px); margin: 0 auto; text-align: center; }
-.capa-cita p { font: italic 400 clamp(1.8rem, 3.2vw, 2.7rem)/1.35 var(--serif); color: var(--crema); }
-.capa-cita footer { margin-top: 30px; font: 600 11px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: #9FDDE0; }
+.capa-cita p { font: italic 400 clamp(1.8rem, 3.2vw, 2.7rem)/1.35 var(--serif); color: var(--tinta); }
+.capa-cita footer { margin-top: 30px; font: 600 11px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--acento); }
 .capa-cita footer::before { content: ""; display: block; width: 40px; height: 1px; background: var(--linea); margin: 0 auto 16px; }
 
 /* ---------- Con túnel ---------- */
@@ -53,19 +53,18 @@
 .con-tunel .capa.activa { pointer-events: auto; }
 .con-tunel .capa-foto { transition: box-shadow .6s var(--curva); }
 
-.con-tunel .tunel-indice { display: flex; flex-direction: column; gap: 14px; position: absolute; right: 32px; top: 50%; transform: translateY(-50%); margin: 0; padding: 0; list-style: none; z-index: 5; }
+.con-tunel .tunel-indice { display: none; flex-direction: column; gap: 14px; position: absolute; right: 32px; top: 50%; transform: translateY(-50%); margin: 0; padding: 0; list-style: none; z-index: 5; }
 .tunel-indice li { display: flex; align-items: center; justify-content: flex-end; gap: 10px; font: 500 10.5px/1 var(--sans); letter-spacing: .14em; color: rgba(250, 247, 242, .35); transition: color .4s var(--curva); }
 .tunel-indice li::after { content: ""; width: 14px; height: 1px; background: currentColor; transition: width .4s var(--curva); }
 .tunel-indice li.activa { color: var(--linea); }
 .tunel-indice li.activa::after { width: 34px; }
 
-.con-tunel .tunel-pista { display: flex; flex-direction: column; align-items: center; gap: 12px; position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); margin: 0; font: 600 10.5px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: rgba(250, 247, 242, .55); transition: opacity .5s var(--curva); z-index: 5; }
+.con-tunel .tunel-pista { display: flex; flex-direction: column; align-items: center; gap: 12px; position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); margin: 0; font: 600 10.5px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--suave); transition: opacity .5s var(--curva); z-index: 5; }
 .tunel-pista span { width: 1px; height: 38px; background: linear-gradient(var(--linea), transparent); animation: pista 1.8s var(--curva) infinite; transform-origin: top; }
 .tunel-pista.fuera { opacity: 0; }
 @keyframes pista { 0% { transform: scaleY(0); } 60% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
 
 /* Pie sobre fondo oscuro */
-.pagina-noche .pie { background: #081A1D; border-top: 1px solid rgba(41, 176, 184, .15); }
 
 /* Tablet */
 @media (max-width: 900px) {
@@ -102,7 +101,4 @@
   .con-tunel .tunel { height: calc(var(--n) * 85vh + 100vh); }
   .con-tunel .capa { padding: 64px 0 72px; }
   .con-tunel .tunel-pista { bottom: 84px; }
-  .pagina-noche .barra-movil { background: var(--noche-2); border-top-color: rgba(41, 176, 184, .2); }
-  .pagina-noche .barra-movil a { color: var(--crema); }
-  .pagina-noche .barra-movil a:first-child { background: var(--linea); color: var(--noche); }
 }

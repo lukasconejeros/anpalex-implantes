@@ -8,13 +8,13 @@
 
   var capas = [].slice.call(sec.querySelectorAll(".capa"));
   var N = capas.length;
-  var PROF = 1500;          // distancia entre escenas (px de profundidad)
+  var PROF = 360;           // poca profundidad: la escena se acerca suave, sin efecto de viaje
   var FOCO = 1000;          // igual a la perspectiva del CSS
   var lienzo = sec.querySelector(".tunel-lineas");
-  var ctx = lienzo.getContext("2d");
+  var ctx = lienzo ? lienzo.getContext("2d") : null;
   var pista = sec.querySelector(".tunel-pista");
   var indice = sec.querySelector(".tunel-indice");
-  var marcas = capas.map(function (c, i) {
+  var marcas = !indice ? [] : capas.map(function (c, i) {
     var li = document.createElement("li");
     li.textContent = (i < 9 ? "0" : "") + (i + 1);
     indice.appendChild(li);
@@ -30,6 +30,7 @@
 
   var ancho = 0, alto = 0, dpr = 1;
   function medir() {
+    if (!ctx) return;
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     ancho = lienzo.clientWidth; alto = lienzo.clientHeight;
     lienzo.width = Math.round(ancho * dpr); lienzo.height = Math.round(alto * dpr);
@@ -49,6 +50,7 @@
   }
 
   function dibujar(pos) {
+    if (!ctx) return;
     ctx.clearRect(0, 0, ancho, alto);
     var cx = ancho / 2, cy = alto / 2, base = Math.max(ancho, alto) * 0.62;
     var cam = pos * PROF, PASO = 520, off = cam % PASO;
@@ -89,7 +91,7 @@
   function pintar(pos) {
     for (var i = 0; i < N; i++) {
       var d = pos - i;                       // 0 = al frente; >0 = ya pasó; <0 = viene
-      var op = d > 0 ? 1 - d * 2 : 1 + d * 1.25;   // la que viene aparece recién cerca, para no ensuciar el texto
+      var op = d > 0 ? 1 - d * 2.5 : 1 + d * 1.6;   // una se va y recién ahí llega la otra: no se mezclan
       op = Math.max(0, Math.min(1, op));
       var c = capas[i];
       if (op <= 0.01) { if (c.style.visibility !== "hidden") c.style.visibility = "hidden"; continue; }
