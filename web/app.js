@@ -23,6 +23,21 @@
   window.addEventListener("scroll", sombra, { passive: true });
   sombra();
 
+  // Menú del teléfono.
+  var botonMenu = document.querySelector(".boton-menu");
+  if (botonMenu) {
+    botonMenu.addEventListener("click", function () {
+      var abierto = document.documentElement.classList.toggle("menu-abierto");
+      botonMenu.setAttribute("aria-expanded", abierto ? "true" : "false");
+    });
+    document.querySelectorAll(".menu a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        document.documentElement.classList.remove("menu-abierto");
+        botonMenu.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
   // Aparecer al bajar.
   var piezas = document.querySelectorAll(".aparece");
   if ("IntersectionObserver" in window) {
